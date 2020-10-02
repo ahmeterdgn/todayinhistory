@@ -1,1 +1,1 @@
-String globaUrl = 'http://history.muffinlabs.com';
+String globalUrl = 'http://history.muffinlabs.com/date';

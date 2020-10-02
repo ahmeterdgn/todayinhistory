@@ -16,7 +16,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (context) => IntroPage(),
+        '/': (context) => HomePage(),
+        '/home': (context) => IntroPage(),
       },
     );
   }
