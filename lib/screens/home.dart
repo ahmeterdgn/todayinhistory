@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
           data.add({
             'text': jsonDataAll[i]['text'],
             'year': jsonDataAll[i]['year'],
+            'link': jsonDataAll[i]['links']
           });
           isLoading = false;
         });
@@ -76,6 +78,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: ListView.builder(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
           itemCount: data.length,
           itemBuilder: (context, index) {
             return ListTile(
@@ -83,10 +86,20 @@ class _HomePageState extends State<HomePage> {
               subtitle: Text(data[index]['text']),
               trailing: IconButton(
                 icon: Icon(Icons.open_in_new),
-                onPressed: () {},
+                onPressed: () {
+                  _launchURL(url: data[index]['link'][0]['link']);
+                },
               ),
             );
           }),
     );
+  }
+
+  _launchURL({url}) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
