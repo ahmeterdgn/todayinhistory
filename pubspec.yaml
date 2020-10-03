@@ -32,6 +32,7 @@ dependencies:
   intro_slider: ^2.3.3
   convex_bottom_bar: ^2.5.0
   url_launcher: ^5.7.2
+  flutter_inner_drawer: "^0.5.7+2"
 
 dev_dependencies:
   flutter_test:
