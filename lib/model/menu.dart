@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 List<MenuItem> items = [
   new MenuItem<int>(
     id: 0,
-    title: 'History',
+    title: 'HISTORY',
     icon: Icons.fastfood,
   ),
   new MenuItem<int>(

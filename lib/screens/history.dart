@@ -76,16 +76,18 @@ class _HistoryPageState extends State<HistoryPage> {
         },
       ),
       body: ListView.builder(
+          // reverse: true,
           padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
           itemCount: data.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text('Year : ${data[index]['year']}'),
-              subtitle: Text(data[index]['text']),
+              title: Text('Year : ${data[data.length - 1 - index]['year']}'),
+              subtitle: Text(data[data.length - 1 - index]['text']),
               trailing: IconButton(
                 icon: Icon(Icons.open_in_new),
                 onPressed: () {
-                  _launchURL(url: data[index]['link'][0]['link']);
+                  _launchURL(
+                      url: data[data.length - 1 - index]['link'][0]['link']);
                 },
               ),
             );
