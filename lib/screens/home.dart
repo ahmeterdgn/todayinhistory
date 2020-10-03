@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
@@ -34,7 +35,6 @@ class _HomePageState extends State<HomePage> {
             'year': jsonDataAll[i]['year'],
           });
           isLoading = false;
-          print(data);
         });
       }
     } else {
@@ -45,19 +45,25 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('TIH'),
+      ),
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Colors.red[400],
+        elevation: 5,
+        // cornerRadius: 5,
         items: [
           TabItem(
-            icon: Icons.home,
+            icon: FontAwesomeIcons.bookDead,
             title: 'Deaths',
           ),
           TabItem(
-            icon: Icons.map,
+            icon: Icons.event,
             title: 'Events',
           ),
           TabItem(
-            icon: Icons.message,
-            title: 'Births',
+            icon: FontAwesomeIcons.birthdayCake,
+            title: 'Birthday',
           ),
         ],
         initialActiveIndex: 1, //optional, default as 0
@@ -73,8 +79,12 @@ class _HomePageState extends State<HomePage> {
           itemCount: data.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(data[index]['year']),
+              title: Text('Year : ${data[index]['year']}'),
               subtitle: Text(data[index]['text']),
+              trailing: IconButton(
+                icon: Icon(Icons.open_in_new),
+                onPressed: () {},
+              ),
             );
           }),
     );
