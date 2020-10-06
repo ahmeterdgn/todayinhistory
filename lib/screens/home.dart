@@ -1,14 +1,7 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:todayinhistory/constants/global.dart';
 import 'package:todayinhistory/model/menu.dart';
 import 'package:todayinhistory/screens/history.dart';
-import 'package:todayinhistory/screens/intro.dart';
 import 'package:todayinhistory/screens/settings.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 
 class HomePage extends StatefulWidget {

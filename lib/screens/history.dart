@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:drawerbehavior/drawerbehavior.dart';
+import 'package:aws_translate/aws_translate.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -30,6 +30,7 @@ class _HistoryPageState extends State<HistoryPage> {
     if (response.statusCode == 200) {
       jsonData = json.decode(response.body);
       jsonDataAll = jsonData['data'][bolum];
+
       for (var i = 0; i < jsonDataAll.length; i++) {
         setState(() {
           data.add({
