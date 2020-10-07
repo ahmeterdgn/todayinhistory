@@ -8,18 +8,42 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   var themes = false;
+  @override
+  void initState() {
+    super.initState();
+    data();
+    getdata();
+  }
+
+  data() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('theme', themes);
+  }
+
+  getdata() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      themes = prefs.getBool('theme') ?? false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Switch(
-          onChanged: (bool value) {
-            setState(() {
-              themes = value;
-            });
-          },
-          value: themes,
+        Row(
+          children: [
+            Text('Theme'),
+            Switch(
+              onChanged: (bool value) {
+                setState(() {
+                  themes = value;
+                  data();
+                });
+              },
+              value: themes,
+            ),
+          ],
         ),
       ],
     );

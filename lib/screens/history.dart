@@ -52,7 +52,6 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Colors.red[400],
         elevation: 5,
         // cornerRadius: 5,
         items: [

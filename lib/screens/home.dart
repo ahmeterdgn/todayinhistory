@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
     return DrawerScaffold(
       appBar: AppBar(
         title: Text("Today In History"),
-        backgroundColor: Colors.red[400],
       ),
       drawers: [
         SideDrawer(
@@ -30,7 +29,6 @@ class _HomePageState extends State<HomePage> {
           menu: menu,
           direction: Direction.left,
           animation: true,
-          color: Colors.red,
           background: DecorationImage(
             fit: BoxFit.cover,
             image: NetworkImage(
