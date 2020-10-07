@@ -35,7 +35,6 @@ dependencies:
   drawerbehavior: ^1.1.2
   aws_translate: ^0.1.1
   shared_preferences: ^0.5.12
-  provider: ^3.0.0
 
 dev_dependencies:
   flutter_test:
