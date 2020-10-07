@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:aws_translate/aws_translate.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
