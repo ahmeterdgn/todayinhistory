@@ -19,6 +19,8 @@ class _HistoryPageState extends State<HistoryPage> {
     fetch();
   }
 
+  DarkTheme c = new DarkTheme();
+
   var data = [];
   var isLoading = true;
   var jsonData;
