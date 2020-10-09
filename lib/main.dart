@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todayinhistory/constants/global.dart';
+import 'package:todayinhistory/constants/theme.dart';
 import 'package:todayinhistory/screens/home.dart';
 import 'package:todayinhistory/screens/intro.dart';
 
@@ -30,14 +33,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider<ThemeChanger>(
+      create: (_) => ThemeChanger(ThemeData.light()),
+      child: Main(),
+    );
+  }
+}
+
+class Main extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.red,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      theme: theme.getTheme(),
       routes: {
         '/': (context) => HomePage(),
         '/home': (context) => IntroPage(),
