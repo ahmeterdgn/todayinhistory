@@ -11,8 +11,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   var themes = false;
-  var dark = false;
-  var light = true;
+
   @override
   void initState() {
     super.initState();

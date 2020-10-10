@@ -34,7 +34,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeChanger>(
-      create: (_) => ThemeChanger(ThemeData.light()),
+      create: (_) => themes == true
+          ? ThemeChanger(ThemeData.light())
+          : ThemeChanger(ThemeData.dark()),
       child: Main(),
     );
   }
