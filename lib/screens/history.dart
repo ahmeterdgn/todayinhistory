@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:todayinhistory/screens/detail.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 import 'package:share/share.dart';
 
@@ -162,13 +161,5 @@ class _HistoryPageState extends State<HistoryPage> {
             );
           }),
     );
-  }
-
-  _launchURL({url}) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
