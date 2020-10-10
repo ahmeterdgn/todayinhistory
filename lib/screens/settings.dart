@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todayinhistory/constants/global.dart';
 import 'package:todayinhistory/constants/theme.dart';
 
 class SettingsPage extends StatefulWidget {

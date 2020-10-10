@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
+import 'package:todayinhistory/screens/detail.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 import 'package:share/share.dart';
@@ -113,7 +114,11 @@ class _HistoryPageState extends State<HistoryPage> {
         initialActiveIndex: 1, //optional, default as 0
         onTap: (int i) {
           setState(() {
-            bolum = i == 1 ? 'Events' : i == 2 ? 'Births' : 'Deaths';
+            bolum = i == 1
+                ? 'Events'
+                : i == 2
+                    ? 'Births'
+                    : 'Deaths';
             data.clear();
             fetch();
           });
@@ -126,6 +131,16 @@ class _HistoryPageState extends State<HistoryPage> {
           itemCount: data.length,
           itemBuilder: (context, index) {
             return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(
+                      url: data[data.length - 1 - index]['link'][0]['link'],
+                    ),
+                  ),
+                );
+              },
               title: Text('Year : ${data[data.length - 1 - index]['year']}'),
               subtitle: Text(
                 data[data.length - 1 - index]['text'],
@@ -142,17 +157,6 @@ class _HistoryPageState extends State<HistoryPage> {
                 onPressed: () {
                   Share.share(
                       '${data[data.length - 1 - index]['text']}  link : ${data[data.length - 1 - index]['link'][0]['link']}');
-                },
-              ),
-              leading: IconButton(
-                icon: Icon(
-                  Icons.open_in_new,
-                  size: 18,
-                ),
-                onPressed: () {
-                  _launchURL(
-                    url: data[data.length - 1 - index]['link'][0]['link'],
-                  );
                 },
               ),
             );
