@@ -17,11 +17,32 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  var datetime;
+
   @override
   Widget build(BuildContext context) {
+    print(datetime.toString().substring(5, 10).replaceAll('-', '/'));
     return DrawerScaffold(
       appBar: AppBar(
         title: Text("Today In History"),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.date_range),
+              onPressed: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2001),
+                  lastDate: DateTime(2222),
+                  initialEntryMode: DatePickerEntryMode.calendar,
+                  helpText: 'Sadece Ay ve Gün İşleyecektir.',
+                ).then((value) {
+                  setState(() {
+                    datetime = value;
+                  });
+                });
+              })
+        ],
       ),
       drawers: [
         SideDrawer(
