@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-String globalUrl = 'https://tid.ahmeterdgn.com/?api';
+String globalUrl = 'http://history.muffinlabs.com/date';

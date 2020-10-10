@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class HistoryPage extends StatefulWidget {
   @override
   _HistoryPageState createState() => _HistoryPageState();
@@ -23,8 +24,13 @@ class _HistoryPageState extends State<HistoryPage> {
   var jsonData;
   var jsonDataAll;
   var bolum = 'Events';
+  DateTime datetime = DateTime.now();
+
   fetch() async {
-    var response = await http.get(globalUrl);
+    var response = await http.get(
+        '$globalUrl/${datetime.toString().substring(5, 10).replaceAll('-', '/')}');
+    print(
+        '$globalUrl/${datetime.toString().substring(5, 10).replaceAll('-', '/')}');
 
     if (response.statusCode == 200) {
       jsonData = json.decode(response.body);
@@ -48,6 +54,27 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('date'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.date_range),
+              onPressed: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2001),
+                  lastDate: DateTime(2222),
+                  initialEntryMode: DatePickerEntryMode.calendar,
+                  helpText: 'Sadece Ay ve Gün İşleyecektir.',
+                ).then((value) {
+                  setState(() {
+                    datetime = value;
+                  });
+                });
+              })
+        ],
+      ),
       bottomNavigationBar: ConvexAppBar(
         elevation: 5,
         // cornerRadius: 5,
