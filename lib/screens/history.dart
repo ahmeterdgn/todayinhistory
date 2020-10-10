@@ -32,8 +32,6 @@ class _HistoryPageState extends State<HistoryPage> {
   fetch() async {
     var response = await http.get(
         '$globalUrl/${datetime.toString().substring(5, 10).replaceAll('-', '/')}');
-    print(
-        '$globalUrl/${datetime.toString().substring(5, 10).replaceAll('-', '/')}');
 
     if (response.statusCode == 200) {
       jsonData = json.decode(response.body);
@@ -83,9 +81,10 @@ class _HistoryPageState extends State<HistoryPage> {
                   lastDate: DateTime(2222),
                   initialEntryMode: DatePickerEntryMode.calendar,
                   helpText: 'Only Month and Day Will Work.',
+                  currentDate: DateTime.now(),
                 ).then((value) {
                   setState(() {
-                    datetime = value;
+                    datetime = value == null ? DateTime.now() : value;
                     data.clear();
                     fetch();
                   });
@@ -96,7 +95,6 @@ class _HistoryPageState extends State<HistoryPage> {
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 5,
-        // cornerRadius: 5,
         items: [
           TabItem(
             icon: FontAwesomeIcons.bookDead,
