@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 // ignore: must_be_immutable
 class HistoryPage extends StatefulWidget {
@@ -24,6 +25,8 @@ class _HistoryPageState extends State<HistoryPage> {
   var jsonData;
   var jsonDataAll;
   var bolum = 'Events';
+  final controller = ScrollController();
+
   DateTime datetime = DateTime.now();
 
   fetch() async {
@@ -54,8 +57,8 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
+      appBar: ScrollAppBar(
+        controller: controller,
         centerTitle: true,
         title: Column(
           children: [
@@ -91,6 +94,7 @@ class _HistoryPageState extends State<HistoryPage> {
         ],
       ),
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 5,
         // cornerRadius: 5,
         items: [
@@ -118,6 +122,7 @@ class _HistoryPageState extends State<HistoryPage> {
       ),
       body: ListView.builder(
           // reverse: true,
+          controller: controller,
           padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
           itemCount: data.length,
           itemBuilder: (context, index) {
