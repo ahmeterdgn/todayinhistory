@@ -131,14 +131,9 @@ class _HistoryPageState extends State<HistoryPage> {
           itemBuilder: (context, index) {
             return ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailPage(
-                      url: data[data.length - 1 - index]['link'][0]['link'],
-                    ),
-                  ),
-                );
+                Navigator.pushNamed(context, '/detail', arguments: {
+                  'url': data[data.length - 1 - index]['link'][0]['link']
+                });
               },
               title: Text('Year : ${data[data.length - 1 - index]['year']}'),
               subtitle: Text(

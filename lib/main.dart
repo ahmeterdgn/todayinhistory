@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todayinhistory/constants/theme.dart';
+import 'package:todayinhistory/screens/detail.dart';
 import 'package:todayinhistory/screens/home.dart';
 import 'package:todayinhistory/screens/intro.dart';
 
@@ -51,6 +52,7 @@ class Main extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/home': (context) => IntroPage(),
+        '/detail': (context) => DetailPage(),
       },
     );
   }
