@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
+import 'package:share/share.dart';
 
 // ignore: must_be_immutable
 class HistoryPage extends StatefulWidget {
@@ -126,12 +127,32 @@ class _HistoryPageState extends State<HistoryPage> {
           itemBuilder: (context, index) {
             return ListTile(
               title: Text('Year : ${data[data.length - 1 - index]['year']}'),
-              subtitle: Text(data[data.length - 1 - index]['text']),
+              subtitle: Text(
+                data[data.length - 1 - index]['text'],
+                style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  fontSize: 12,
+                ),
+              ),
               trailing: IconButton(
-                icon: Icon(Icons.open_in_new),
+                icon: Icon(
+                  Icons.share,
+                  size: 18,
+                ),
+                onPressed: () {
+                  Share.share(
+                      '${data[data.length - 1 - index]['text']}  link : ${data[data.length - 1 - index]['link'][0]['link']}');
+                },
+              ),
+              leading: IconButton(
+                icon: Icon(
+                  Icons.open_in_new,
+                  size: 18,
+                ),
                 onPressed: () {
                   _launchURL(
-                      url: data[data.length - 1 - index]['link'][0]['link']);
+                    url: data[data.length - 1 - index]['link'][0]['link'],
+                  );
                 },
               ),
             );
