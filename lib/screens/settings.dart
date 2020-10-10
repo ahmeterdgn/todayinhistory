@@ -36,37 +36,19 @@ class _SettingsPageState extends State<SettingsPage> {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
     return Column(
       children: [
-        Radio(
-          value: dark,
-          groupValue: themes,
-          onChanged: (bool value) {
-            setState(
-              () {
-                dark = value;
-                _themeChanger.setTheme(ThemeData.light());
-              },
-            );
-          },
-        ),
-        Radio(
-          value: light,
-          groupValue: themes,
-          onChanged: (bool value) {
-            setState(
-              () {
-                light = value;
-                _themeChanger.setTheme(ThemeData.light());
-              },
-            );
-          },
-        ),
-        FlatButton(
-          onPressed: () => _themeChanger.setTheme(ThemeData.dark()),
-          child: Text('dark'),
-        ),
-        FlatButton(
-          onPressed: () => _themeChanger.setTheme(ThemeData.light()),
-          child: Text('light'),
+        ListTile(
+          title: Text('Dark Theme'),
+          trailing: Switch(
+              value: themes,
+              onChanged: (theme) {
+                themes == false
+                    ? _themeChanger.setTheme(ThemeData.dark())
+                    : _themeChanger.setTheme(ThemeData.light());
+                setState(() {
+                  themes = theme;
+                  setdata();
+                });
+              }),
         ),
       ],
     );

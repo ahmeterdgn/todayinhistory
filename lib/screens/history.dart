@@ -55,7 +55,20 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('date'),
+        backgroundColor: Colors.red,
+        centerTitle: true,
+        title: Column(
+          children: [
+            Text('Choose date'),
+            Text(
+              datetime.toString().substring(5, 10).replaceAll('-', '/'),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w100,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
               icon: Icon(Icons.date_range),
@@ -66,10 +79,12 @@ class _HistoryPageState extends State<HistoryPage> {
                   firstDate: DateTime(2001),
                   lastDate: DateTime(2222),
                   initialEntryMode: DatePickerEntryMode.calendar,
-                  helpText: 'Sadece Ay ve Gün İşleyecektir.',
+                  helpText: 'Only Month and Day Will Work.',
                 ).then((value) {
                   setState(() {
                     datetime = value;
+                    data.clear();
+                    fetch();
                   });
                 });
               })

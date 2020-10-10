@@ -6,7 +6,6 @@ class ThemeChanger with ChangeNotifier {
   getTheme() => _themeData;
   setTheme(ThemeData theme, {Text child}) {
     _themeData = theme;
+    notifyListeners();
   }
-
-  notifyListeners();
 }
