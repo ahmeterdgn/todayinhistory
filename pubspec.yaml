@@ -37,6 +37,7 @@ dependencies:
   scroll_app_bar: ^1.0.2
   share: ^0.6.5+2
   webview_flutter: ^1.0.1
+  flutter_local_notifications: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
