@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:todayinhistory/constants/global.dart';
-import 'package:todayinhistory/screens/detail.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 import 'package:share/share.dart';
 
@@ -32,8 +31,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
   fetch() async {
     var response = await http.get(
-        '$globalUrl/${datetime.toString().substring(5, 10).replaceAll('-', '/')}');
-
+        '$globalUrl/${datetime.month.toString()}/${datetime.day.toString()}');
     if (response.statusCode == 200) {
       jsonData = json.decode(response.body);
       jsonDataAll = jsonData['data'][bolum];
