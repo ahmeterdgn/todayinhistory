@@ -12,12 +12,7 @@
         <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
-                <intent-filter>
-                    <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                    <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
-                </intent-filter>
-        </receiver> 
+
 
     <application
         android:name="io.flutter.app.FlutterApplication"
@@ -54,6 +49,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
