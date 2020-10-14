@@ -16,7 +16,7 @@ main() {
 
     // If enabled it will post a notification whenever
     // the task is running. Handy for debugging tasks
-    isInDebugMode: true,
+    isInDebugMode: false,
   );
   // Periodic task registration
   Workmanager.registerPeriodicTask(
@@ -32,7 +32,7 @@ main() {
     // Android will automatically change
     // your frequency to 15 min
     // if you have configured a lower frequency.
-    frequency: Duration(minutes: 15),
+    frequency: Duration(milliseconds: 15),
   );
   runApp(MyApp());
 }
@@ -46,6 +46,7 @@ void callbackDispatcher() {
     // app_icon needs to be a added as a drawable
     // resource to the Android head project.
     var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    // ignore: non_constant_identifier_names
     var IOS = new IOSInitializationSettings();
 
     // initialise settings for both Android and iOS device.
@@ -100,7 +101,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print(themes);
+    // print(themes);
     return ChangeNotifierProvider<ThemeChanger>(
       create: (_) => themes == true
           ? ThemeChanger(ThemeData.light())
