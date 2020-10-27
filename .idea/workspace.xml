@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5164a337-7dd4-4520-ab5b-c3aba794b143" name="Default Changelist" comment="" />
+    <list default="true" id="5164a337-7dd4-4520-ab5b-c3aba794b143" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="flutter_emulator" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -36,17 +39,17 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="6" key="SettingsEditor" timestamp="1601773183146">
+    <state x="184" y="6" key="SettingsEditor" timestamp="1603399284685">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601773183146" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603399284685" />
     <state x="100" y="100" width="1166" height="528" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1601773185868">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="100" y="100" width="1166" height="528" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728@0.0.1366.728" timestamp="1601773185868" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1601773117480">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1603824417597">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1601773117480" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1603824417597" />
   </component>
 </project>
