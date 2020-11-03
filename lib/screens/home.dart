@@ -43,10 +43,13 @@ class _HomePageState extends State<HomePage> {
           },
         )
       ],
-      builder: (context, id) => IndexedStack(index: id, children: [
-        HistoryPage(),
-        SettingsPage(),
-      ]),
+      builder: (context, id) => IndexedStack(
+        index: id,
+        children: [
+          HistoryPage(),
+          SettingsPage(),
+        ],
+      ),
     );
   }
 }
