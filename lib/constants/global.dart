@@ -1,1 +1,2 @@
-String globalUrl = 'http://history.muffinlabs.com/date';
+var url = "http://history.muffinlabs.com/date";
+var date = "";
