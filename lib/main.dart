@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
+import 'package:todayinhistory/constants/global.dart';
 import 'package:todayinhistory/views/home.dart';
 
 void main() {
@@ -14,6 +15,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    date = DateTime.now();
+    print(date.day);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todayinhistory/functions/globals.dart';
-import 'package:todayinhistory/views/detail.dart';
+import 'package:todayinhistory/widgets/list.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -9,63 +8,55 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  var result;
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
 
   @override
   void initState() {
+    _tabController = new TabController(length: 3, vsync: this);
     super.initState();
-    query();
-  }
-
-  query() async {
-    result = await server();
-    setState(() {
-      result = result;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("TIH"),
-      ),
-      body: result != null
-          ? ListView.builder(
-              itemCount: result["data"]["Events"].length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(),
-                      ),
-                    );
-                  },
-                  splashColor: Colors.deepPurple,
-                  child: Container(
-                    margin: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      color: Colors.white,
-                    ),
-                    child: ListTile(
-                      title: Text(result["data"]["Events"][index]["text"]),
-                      trailing: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.arrow_forward_ios_outlined),
-                      ),
-                    ),
-                  ),
-                );
-              })
-          : Center(
-              child: CircularProgressIndicator(),
+        appBar: AppBar(
+          centerTitle: true,
+          bottom: TabBar(
+            unselectedLabelColor: Colors.white,
+            labelColor: Colors.amber,
+            tabs: [
+              Tab(
+                text: "Events",
+                icon: Icon(Icons.date_range_outlined),
+              ),
+              Tab(
+                text: "Deaths",
+                icon: Icon(Icons.chat),
+              ),
+              Tab(
+                text: "Births",
+                icon: Icon(Icons.insert_emoticon_outlined),
+              )
+            ],
+            controller: _tabController,
+          ),
+          title: Text("TIH"),
+        ),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            ListWidget(
+              type: "events",
             ),
-    );
+            ListWidget(
+              type: "deaths",
+            ),
+            ListWidget(
+              type: "births",
+            ),
+          ],
+        ));
   }
 }
